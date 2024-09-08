@@ -1,11 +1,11 @@
-Flask==2.0.3                    # Choose the version compatible with your application
-Werkzeug==1.0.1                 # Adjust to the version you need
-Flask-SQLAlchemy==2.5.1
-Flask-Login==0.5.0
-Flask-CORS==3.0.10
-Flask-Bcrypt==0.7.1
-Flask-Migrate==3.1.0
-SQLAlchemy==1.4.27
-pytest==7.0.1
-pytest-flask==1.2.0
-requests==2.27.1
+Flask>=2.0.3                     # Any version compatible with your app
+Flask-SQLAlchemy>=2.5.1
+Flask-Login>=0.5.0
+Flask-CORS>=3.0.10
+Flask-Bcrypt>=0.7.1
+Flask-Migrate>=3.1.0
+SQLAlchemy>=1.4.27
+pytest>=7.0.1
+pytest-flask>=1.2.0
+requests>=2.27.1
+Werkzeug>=2.0.0                  # Ensure it meets Flask's requirements
