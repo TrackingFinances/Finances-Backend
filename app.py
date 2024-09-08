@@ -49,7 +49,7 @@ def register():
         return jsonify({'message':'User is added'}),201
             
     except InternalServerException as e:
-        return jsonify({'error':str(e)}),500
+        return jsonify({'error':'Internal server error'}),500
     
     
 # Create User Login Route
@@ -67,7 +67,7 @@ def login():
             return jsonify({"message": "Invalid username or password."}), 401
         return jsonify({'error':'Failed login as user is inactive'}),403
     except InternalServerException as e:
-        return jsonify({'error':str(e)}),500
+        return jsonify({'error':'Internal server error'}),500
 
 
 # Create User Logout Route
@@ -398,4 +398,4 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(debug=True)
+    app.run()
