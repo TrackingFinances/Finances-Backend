@@ -1,6 +1,6 @@
 import pytest
 import json
-from app import app, db, User  # Import your Flask app and database
+from ..app import app, db
 
 # Create a fixture for the app
 @pytest.fixture
