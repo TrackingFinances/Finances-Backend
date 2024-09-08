@@ -1,0 +1,10 @@
+Flask==2.1.1                     # Flask framework
+Flask-SQLAlchemy==2.5.1          # SQLAlchemy integration for Flask
+Flask-Login==0.5.0               # User session management
+Flask-CORS==3.0.10               # Cross-Origin Resource Sharing
+Flask-Bcrypt==0.7.1              # Password hashing
+Flask-Migrate==3.1.0             # Database migration for SQLAlchemy
+SQLAlchemy==1.4.27                # SQL toolkit for Python
+pytest==7.0.1                    # Testing framework
+pytest-flask==1.2.0              # Testing utilities for Flask
+requests==2.27.1                  # For making HTTP requests
