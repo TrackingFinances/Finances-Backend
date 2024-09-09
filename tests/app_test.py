@@ -80,7 +80,10 @@ def test_add_expense(client):
         "user": "1",   # Ensure this matches the user_id being tested
         "amount": 100,
         "currency": "USD",
-        "date": "2023-01-01"
+        "date": "2023-01-01",
+        "description": "Groceries"
+        
+        
     })
     json_data = json.loads(response.data)
     assert response.status_code == 201
@@ -103,7 +106,8 @@ def test_add_expense_invalid_currency(client):
         "user": "1",
         "amount": 100,
         "currency": "INVALID_CURRENCY",  # Test with an invalid currency
-        "date": "2023-01-01"
+        "date": "2023-01-01",
+        "description": "Groceries"
     })
     json_data = json.loads(response.data)
     assert response.status_code == 404  # Expecting a not found error due to currency check
@@ -115,7 +119,8 @@ def test_add_expense_missing_user(client):
     response = client.post('/addExpense', json={
         "amount": 100,
         "currency": "USD",
-        "date": "2023-01-01"
+        "date": "2023-01-01",
+        "description": "Groceries"
     })
     json_data = json.loads(response.data)
     assert response.status_code == 404

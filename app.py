@@ -102,6 +102,7 @@ def addExpense():
     amount=data.get('amount')
     currency=data.get('currency')
     date=data.get('date')
+    description = data.get('description', '')
 
     if user_id is None :
         return jsonify({'error':'User not found'}),404
@@ -122,7 +123,7 @@ def addExpense():
     else :
         return jsonify({'error':'Date of expense is required'}),400
 
-    expense= Expense(user_id=user_id,amount=Decimal(amount),currency=currency,date=date)
+    expense= Expense(user_id=user_id,amount=Decimal(amount),currency=currency,date=date,description=description)
 
     db.session.add(expense)
     db.session.commit()
@@ -138,6 +139,7 @@ def getExpense():
         user_id = data.get('user_id')
         start_date = data.get('start_date')
         end_date = data.get('end_date')
+        
         
         if user_id is None :
             return jsonify({'error':'User not found'}),404
@@ -179,6 +181,7 @@ def addIncome():
     amount=data.get('amount')
     currency=data.get('currency')
     date=data.get('date')
+    description = data.get('description', '')
 
     if user_id is None :
         return jsonify({'error':'User not found'}),404
@@ -199,7 +202,7 @@ def addIncome():
     else :
         return jsonify({'error':'Date of income is required'}),400
 
-    income= Income(user_id=user_id,amount=Decimal(amount),currency=currency,date=date)
+    income= Income(user_id=user_id,amount=Decimal(amount),currency=currency,date=date,description=description)
 
     db.session.add(income)
     db.session.commit()
@@ -256,6 +259,7 @@ def addInvestment():
     amount=data.get('amount')
     currency=data.get('currency')
     date=data.get('date')
+    description = data.get('description', '')
 
     if user_id is None :
         return jsonify({'error':'User not found'}),404
@@ -276,7 +280,7 @@ def addInvestment():
     else :
         return jsonify({'error':'Date of investment is required'}),400
 
-    investment = Investment(user_id=user_id,amount=Decimal(amount),currency=currency,date=date)
+    investment = Investment(user_id=user_id,amount=Decimal(amount),currency=currency,date=date,description=description)
 
     db.session.add(investment)
     db.session.commit()
@@ -349,6 +353,7 @@ def get_all():
             Expense.date,
             Expense.amount,
             Expense.currency,
+            Expense.description,
             db.literal('expense').label('transactionType')
             ).filter(
                 Expense.user_id==user_id,
@@ -360,6 +365,7 @@ def get_all():
             Income.date,
             Income.amount,
             Income.currency,
+            Income.description,
             db.literal('income').label('transactionType')
             ).filter(
                 Income.user_id==user_id,
@@ -371,6 +377,7 @@ def get_all():
             Investment.date,
             Investment.amount,
             Investment.currency,
+            Investment.description,
             db.literal('investment').label('transactionType')
             ).filter(
                 Investment.user_id==user_id,
@@ -387,6 +394,7 @@ def get_all():
                 'date':row.date.isoformat(),
                 'amount':float(row.amount),
                 'currency':row.currency,
+                'description':row.description,
                 'transactionType':row.transactionType
             })
         return jsonify(finances_data),200

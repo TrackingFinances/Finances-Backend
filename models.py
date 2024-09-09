@@ -46,6 +46,7 @@ class Expense(db.Model):
     amount = db.Column(Numeric(precision=10, scale=2), nullable=False)
     currency = db.Column(db.String(3),db.ForeignKey('currencies.currency'),nullable=False)
     date = db.Column(DateTime)
+    description = db.Column(db.String(255), nullable=True)
 
 class Income(db.Model):
     __tablename__ = 'incomes'
@@ -54,6 +55,7 @@ class Income(db.Model):
     amount = db.Column(Numeric(precision=10, scale=2), nullable=False)
     currency = db.Column(db.String(3),db.ForeignKey('currencies.currency'),nullable=False)
     date = db.Column(DateTime)
+    description = db.Column(db.String(255), nullable=True)
 
 class Investment(db.Model):
     __tablename__ = 'investments'
@@ -62,4 +64,5 @@ class Investment(db.Model):
     amount = db.Column(Numeric(precision=10, scale=2), nullable=False)
     currency = db.Column(db.String(3),db.ForeignKey('currencies.currency'),nullable=False)
     date = db.Column(DateTime)
+    description = db.Column(db.String(255), nullable=True)
 
